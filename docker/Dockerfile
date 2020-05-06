@@ -36,6 +36,7 @@ RUN pip install --upgrade pip && \
       jupyter \
       rtree \
       freeze \
+      osmnx \
       keras && \
     pip install git+https://github.com/aleju/imgaug
 ADD mycert.pem mykey.key /var/keys/
