@@ -39,7 +39,7 @@ RUN pip install --upgrade pip && \
       osmnx \
       keras && \
     pip install git+https://github.com/aleju/imgaug
-ADD mycert.pem mykey.key /var/keys/
+#ADD mycert.pem mykey.key /var/keys/
 RUN mkdir /tf
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --allow-root --config=/root/.jupyter/jupyter_notebook_config.py"]
