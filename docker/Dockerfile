@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.1.0-gpu-py3
+FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       bzip2 \
@@ -39,7 +39,6 @@ RUN pip install --upgrade pip && \
       osmnx \
       keras && \
     pip install git+https://github.com/aleju/imgaug
-#ADD mycert.pem mykey.key /var/keys/
-RUN mkdir /tf
+# ADD mycert.pem mykey.key /var/keys/
 ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --allow-root --config=/root/.jupyter/jupyter_notebook_config.py"]
