@@ -1,6 +1,7 @@
 FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+      software-properties-common \
       bzip2 \
       g++ \
       git \
@@ -9,11 +10,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libhdf5-dev \
       openmpi-bin \
       libspatialindex-dev \
+      gdal-bin \
+      libgdal-dev \
       wget && \
     rm -rf /var/lib/apt/lists/*
 
+ARG CPLUS_INCLUDE_PATH=/usr/include/gdal
+ARG C_INCLUDE_PATH=/usr/include/gdal
+
 RUN pip install --upgrade pip && \
     pip install \
+      GDAL==`gdal-config --version` \
       six \
       numpy \
       scipy \
